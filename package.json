@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "ht-animated-image.js",
   "repository": "01ht/ht-animated-image",
-  "author": "01ht Ltd",
+  "author": "01HT Ltd",
   "license": "UNLICENSED",
   "dependencies": {
-    "@polymer/lit-element": "^0.5.1"
+    "@polymer/lit-element": "^0.6.1"
   }
 }
