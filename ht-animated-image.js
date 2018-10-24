@@ -2,7 +2,7 @@
 import { LitElement, html } from "@polymer/lit-element";
 class HTAnimatedImage extends LitElement {
   render() {
-    const { data } = this;
+    const { data, loop } = this;
     if (data === undefined || data.public_id === undefined) return;
     let poster = `${window.cloudinaryURL}/${data.resource_type}/upload/v${
       data.version
