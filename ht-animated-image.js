@@ -1,45 +1,45 @@
 "use strict";
 import { LitElement, html, css } from "lit-element";
 
+import { stylesBasicWebcomponents } from "@01ht/ht-theme/styles";
+
 class HTAnimatedImage extends LitElement {
-  static styles = css`<style>
-    :host {
-      display: block;
-      position:relative;
-      box-sizing:border-box;
-    }
+  static get styles() {
+    return [
+      stylesBasicWebcomponents,
+      css`
+        video {
+          display: block;
+        }
 
-    video {
-      display:block;
-    }
-    
-    #label {
-      border-radius: 3px;
-      opacity: 1;
-      line-height: 20px;
-      padding: 0 8px;
-      font-size: 9px;
-      font-weight: 700;
-      color: #fff;
-      background-color: rgba(0, 0, 0, .3);
-      position: absolute;
-      transition: opacity 150ms ease;
-      bottom: 16px;
-      left: 16px;
-    }
-    
-    #container:hover #label {
-      display:none;
-    }
+        #label {
+          border-radius: 3px;
+          opacity: 1;
+          line-height: 20px;
+          padding: 0 8px;
+          font-size: 9px;
+          font-weight: 700;
+          color: #fff;
+          background-color: rgba(0, 0, 0, 0.3);
+          position: absolute;
+          transition: opacity 150ms ease;
+          bottom: 16px;
+          left: 16px;
+        }
 
-    [hidden] {
-      display:none;
-    }
-  </style>`;
+        #container:hover #label {
+          display: none;
+        }
+
+        [hidden] {
+          display: none;
+        }
+      `
+    ];
+  }
 
   render() {
     const { data, loop } = this;
-    if (data === undefined || data.public_id === undefined) return;
     let poster = `${window.cloudinaryURL}/${data.resource_type}/upload/v${
       data.version
     }/${data.public_id}.jpg`;
@@ -82,6 +82,14 @@ class HTAnimatedImage extends LitElement {
         video.pause();
       });
     }
+  }
+
+  shouldUpdate(changedProperties) {
+    if (changedProperties.has("data")) {
+      if (this.data === undefined || this.data.public_id === undefined)
+        return false;
+    }
+    return true;
   }
 }
 
