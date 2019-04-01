@@ -40,7 +40,7 @@ class HTAnimatedImage extends LitElement {
 
   render() {
     const { data, loop } = this;
-    let poster = `${window.cloudinaryURL}/${data.resource_type}/upload/v${
+    let poster = `${window.cloudinaryURL}/${data.resource_type}/upload/so_0p/v${
       data.version
     }/${data.public_id}.jpg`;
     let mp4 = `${window.cloudinaryURL}/${data.resource_type}/upload/v${
