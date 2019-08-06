@@ -40,15 +40,15 @@ class HTAnimatedImage extends LitElement {
 
   render() {
     const { data, loop } = this;
-    let poster = `${window.cloudinaryURL}/${data.resource_type}/upload/so_0p/v${
-      data.version
-    }/${data.public_id}.jpg`;
-    let mp4 = `${window.cloudinaryURL}/${data.resource_type}/upload/v${
-      data.version
-    }/${data.public_id}.mp4`;
-    let webm = `${window.cloudinaryURL}/${data.resource_type}/upload/v${
-      data.version
-    }/${data.public_id}.webm`;
+    let poster = `${window.appConfig.cloudinary.url}/${
+      data.resource_type
+    }/upload/so_0p/v${data.version}/${data.public_id}.jpg`;
+    let mp4 = `${window.appConfig.cloudinary.url}/${
+      data.resource_type
+    }/upload/v${data.version}/${data.public_id}.mp4`;
+    let webm = `${window.appConfig.cloudinary.url}/${
+      data.resource_type
+    }/upload/v${data.version}/${data.public_id}.webm`;
     return html`
       <div id="container">
         <video width="100%" height="auto" ?autoplay="${loop}" loop muted="muted" poster="${poster}">
